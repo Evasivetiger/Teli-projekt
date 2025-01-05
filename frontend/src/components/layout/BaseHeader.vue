@@ -23,7 +23,6 @@
       </button>
       <div class="w-full md:block md:w-auto" :class="{hidden: !menuOpen}">
         <ul class="menu">
-          <li class="menuitem"><RouterLink to="index">Főoldal</RouterLink></li>
           <li class="menuitem"><RouterLink to="champions">Hősök listája</RouterLink></li>
           <li class="menuitem"><RouterLink to="create">Hős hozzáadása</RouterLink></li>
         </ul>

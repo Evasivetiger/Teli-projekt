@@ -52,13 +52,3 @@
   }
   
   </script>
-  
-  <route lang="json">
-    {
-      "name": "hosok",
-      "meta":{
-        "title": "Hősök"
-      }
-    }
-  </route>
-  
