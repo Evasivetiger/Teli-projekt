@@ -31,13 +31,6 @@
     />
     <FormKit
       type="text"
-      name="primary_role"
-      label="A hős elsődleges szerepe"
-      placeholder="adc"
-      validation="required"
-    />
-    <FormKit
-      type="text"
       name="secondary_role"
       label="A hős másodlagos szerepe"
       placeholder="top vagy tank"
