@@ -2,7 +2,7 @@
   <nav class="bg-white dark:bg-gray-800">
     <div class="flex justify-between p-3 border-b-2 flex-wrap dark:border-none">
       <RouterLink to="/" class="flex items-center space-x-3">
-        <span class="self-center text-2xl font-semibold dark:text-white">Feladat</span>
+        <span class="self-center text-2xl font-semibold dark:text-white">League hősök</span>
       </RouterLink>
       <button class="block md:hidden" @click="toggleMenu">
         <svg
@@ -23,7 +23,9 @@
       </button>
       <div class="w-full md:block md:w-auto" :class="{hidden: !menuOpen}">
         <ul class="menu">
-          <li class="menuitem"><RouterLink to="#">1. oldal</RouterLink></li>
+          <li class="menuitem"><RouterLink to="index">Főoldal</RouterLink></li>
+          <li class="menuitem"><RouterLink to="champions">Hősök listája</RouterLink></li>
+          <li class="menuitem"><RouterLink to="create">Hős hozzáadása</RouterLink></li>
         </ul>
       </div>
     </div>

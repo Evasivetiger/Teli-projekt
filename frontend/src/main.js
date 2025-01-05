@@ -1,13 +1,19 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { router } from '@/router/index.js'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { plugin, defaultConfig } from '@formkit/vue'
 import config from '../formkit.config.js'
-
 import App from '@/App.vue'
-
 import '@assets/app.scss'
+
+
+import {router} from "@/router"
+
+
+
+
+
+
 
 const app = createApp(App)
 

@@ -1,26 +1,42 @@
 <template>
-  <BaseLayout>
-    <h1 class="text-6xl my-10 dark:text-white">Hello!</h1>
-    <button class="bg-blue-500 text-white rounded py-2 px-4" @click="increment()">
-      Számláló: {{ counter }}
-    </button>
-  </BaseLayout>
+  <div>
+    <BaseHeader></BaseHeader>
+  </div>
 </template>
 
 <script>
-import BaseLayout from '@layouts/BaseLayout.vue'
-import { useCounter } from '@stores/CounterStore.mjs'
-import { mapState, mapActions } from 'pinia'
+import {RouterLink} from 'vue-router'
+import { http } from '@utils/http.mjs'
+import BaseHeader from '../components/layout/BaseHeader.vue';
 
 export default {
-  components: {
-    BaseLayout
+  data() {
+    return {
+      data: [],
+    }
   },
-  computed: {
-    ...mapState(useCounter, ['counter'])
+  components: {
+    BaseHeader,
+    RouterLink,
   },
   methods: {
-    ...mapActions(useCounter, ['increment'])
+    async getData() {
+      const response = await http.get('/champions')
+      this.data = response.data.data
+    }
+  },
+  async mounted() {
+    await this.getData()
   }
 }
+
 </script>
+
+<route lang="json">
+  {
+    "name": "fooldal",
+    "meta":{
+      "title": "Főoldal"
+    }
+  }
+</route>
