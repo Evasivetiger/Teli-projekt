@@ -19,7 +19,9 @@
           <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ champ.secondary_role }}</td>
           <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ champ.base_hp }}</td>
           <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ champ.base_mana }}</td>
-        
+          
+          <td><RouterLink class="bg-blue-600 text-white p-4 rounded w-2/12" :to='{name:"edit",params: {id:champ.id}}'>Módosítás</RouterLink></td>
+          <td><button type="button" class="bg-red-500 text-white p-4 rounded w-2/12" @click="deleteChamp">Törlés</button></td>
         </tr>
       </tbody>
     </table>
@@ -30,11 +32,18 @@
   <script>
   import BaseLayout from '@layouts/BaseLayout.vue'
   import { http } from '@utils/http.mjs'
+import { RouterLink } from 'vue-router';
   
   export default {
     data() {
       return {
-        data: [],
+        champs:{
+                name: '',
+                primary_role: '',
+                secondary_role: '',
+                base_hp: '',
+                base_mana: '',
+        }
       }
     },
     components: {
@@ -44,7 +53,25 @@
       async getData() {
         const response = await http.get('/champions')
         this.data = response.data.data
-      }
+      },
+      async getChamp() {
+            const response = await http.get(`/champions/${this.$route.params.id}`)
+            this.champs.name = response.data.data.name
+            this.champs.primary_role = response.data.data.primary_role
+            this.champs.secondary_role = response.data.data.secondary_role
+            this.champs.base_hp = response.data.data.base_hp
+            this.champs.base_mana = response.data.data.base_mana
+            console.log(response.data.data)
+            console.log(this.champs.name)
+
+        },
+        async deleteChamp(){
+            const response = await axios.delete(`http://backend.vm1.test/api/champions/${this.$route.params.id}`)
+            window.location.replace('http://frontend.vm1.test/champions')
+        },
+        Redirect(){
+          window.location.replace('edit')
+        }
     },
     async mounted() {
       await this.getData()

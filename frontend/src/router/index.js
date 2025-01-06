@@ -15,6 +15,11 @@ const routes = [
     name: "create",
     path: "/create",
     component:() => import('@pages/createchamp.vue')
+  },
+  {
+    name: "edit",
+    path: "/edit",
+    component:() => import('@pages/editchamp.vue')
   }
 ]
 
