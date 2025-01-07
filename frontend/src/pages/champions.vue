@@ -21,7 +21,7 @@
           <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ champ.base_mana }}</td>
           
           <td><RouterLink class="bg-blue-600 text-white p-4 rounded w-2/12" :to='{name:"edit",params: {id:champ.id}}'>Módosítás</RouterLink></td>
-          <td><button type="button" class="bg-red-500 text-white p-4 rounded w-2/12" @click="deleteChamp">Törlés</button></td>
+          <td><button type="button" class="bg-red-500 text-white p-4 rounded w-2/12" @click="deleteChamp(champ.id)">Törlés</button></td>
         </tr>
       </tbody>
     </table>
@@ -37,6 +37,7 @@ import { RouterLink } from 'vue-router';
   export default {
     data() {
       return {
+        data:[],
         champs:{
                 name: '',
                 primary_role: '',
@@ -65,9 +66,9 @@ import { RouterLink } from 'vue-router';
             console.log(this.champs.name)
 
         },
-        async deleteChamp(){
-            const response = await axios.delete(`http://backend.vm1.test/api/champions/${this.$route.params.id}`)
-            window.location.replace('http://frontend.vm1.test/champions')
+        async deleteChamp(id){
+            const response = await http.delete(`champions/${id}`)
+            window.location.replace('champions')
         },
         Redirect(){
           window.location.replace('edit')
