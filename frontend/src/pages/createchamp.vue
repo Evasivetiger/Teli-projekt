@@ -6,7 +6,7 @@
     id="registration-example"
     :form-class="submitted ? 'hide' : 'show'"
     submit-label="Register"
-    @submit="submitHandler"
+    @submit="submit"
     :actions="false"
     #default="{ value }"
   >
@@ -62,6 +62,8 @@
   import {RouterLink} from 'vue-router'
   import BaseHeader from '../components/layout/BaseHeader.vue';
  import { FormKit } from '@formkit/vue';
+ import { http } from '@utils/http.mjs';
+
   
   export default {
     data() {
@@ -76,15 +78,16 @@
     methods: {
         async submit(data){
             try {
-                const response = await axios.post("champions", data);
+                const response = await http.post("champions", data);
                 console.log("sikerült");
+                this.$router.push("/champions");
+
             } catch (error) {
                 console.error(error);
             }
         }
     },
     async mounted() {
-      await this.getData()
     }
   }
   
