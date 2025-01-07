@@ -9,6 +9,10 @@
           <th class="p-3 text-sm font-semibold text-left">Másodlagos szerep</th>
           <th class="p-3 text-sm font-semibold text-left">Kezdő HP</th>
           <th class="p-3 text-sm font-semibold text-left">Kezdő mana</th>
+          <th>
+
+          </th>
+          <th></th>
         </tr>
       </thead>
       <tbody class="divide-y divide-gray-100">
@@ -20,8 +24,8 @@
           <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ champ.base_hp }}</td>
           <td class="p-3 text-sm text-gray-700 whitespace-nowrap">{{ champ.base_mana }}</td>
           
-          <td><RouterLink class="bg-blue-600 text-white p-4 rounded w-2/12" :to='{name:"edit",params: {id:champ.id}}'>Módosítás</RouterLink></td>
-          <td><button type="button" class="bg-red-500 text-white p-4 rounded w-2/12" @click="deleteChamp(champ.id)">Törlés</button></td>
+          <td><RouterLink class="bg-blue-600 text-white p-4 rounded " :to='{name:"edit",params: {id:champ.id}}'>Módosítás</RouterLink></td>
+          <td><button type="button" class="bg-red-500 text-white p-4 rounded " @click="deleteChamp(champ.id)">Törlés</button></td>
         </tr>
       </tbody>
     </table>
